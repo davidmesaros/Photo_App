@@ -1,5 +1,16 @@
 <% if current_user %>
   <h3>Welcome: <%= current_user.email %></h3>
+  <% if current_user.admin? %>
+  <h4><%= link_to 'List of User', users_path %></h4>
+
+  <% end %>
+  <h5><%= link_to "Show your details", user_path(current_user) %> ||</h5>
+  <% dash = Dashboard.find_by(:user_id => current_user) %>
+  <h5><%= link_to 'View Dashboard', dashboard_path(dash) %> ||</h5>
+  <% if @user.dashboards.blank? %>
+    <h5><%= link_to 'Create New Dashboard', new_dashboard_path %></h5>
+  <% end %>    
+</br>
 <% else %>
   <div class="jumbotron overlay">
     <h2>Welcome to the Photo Management App!</h2>

@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_one :payment
   accepts_nested_attributes_for :payment # sign up user in the new form is saved as with the payment confrirmation is save in one hit eg after valid credit card is added.
   has_many :images
+  has_many :dashboards
 end
